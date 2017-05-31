@@ -1,0 +1,35 @@
+{{ form_start(form, { 'attr': {'class': 'ui form'}}) }}
+
+
+    <div class="field">
+        <label>Intitulé </label>
+        {{ form_widget(form.name) }}
+    </div>
+    <br/>
+    <div class="field">
+        <label>Durée cours en seconde</label>
+        {{ form_widget(form.duration) }}
+    </div>
+
+    <br/>
+    <div class="field">
+        <label>Difficulté (1 à 5)</label>
+        {{ form_widget(form.level) }}
+    </div>
+    <br/>
+
+    <div class="field">
+        <label>Catégorie </label>
+        {{ form_widget(form.category) }}
+    </div>
+
+    <br/>
+    <div class="field">
+
+        <label>Description</label>
+        {{ form_widget(form.description) }}
+    </div>
+
+    <input class="ui fluid large teal submit button" type="submit" id="_submit" value   ="Proposer" />
+
+{{ form_end(form) }}

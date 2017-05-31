@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}{%  endblock %}</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('Resources/css/Semantic/semantic.min.css') }}" />
+            <link rel="stylesheet" href="{{ asset('Resources/css/main.css') }}" />
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% set route = app.request.attributes.get('_route') %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('Resources/js/jquery-3.1.0.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/accordion.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/api.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/checkbox.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/colorize.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/dimmer.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/dropdown.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/embed.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/form.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/modal.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/nag.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/popup.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/progress.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/rating.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/search.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/shape.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/sidebar.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/site.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/state.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/sticky.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/tab.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/transition.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/video.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/visibility.min.js') }}"></script>
+            <script src="{{ asset('Resources/js/Semantic/visit.min.js') }}"></script>
+
+            {% block additionnal_js %}{%  endblock %}
+        {% endblock %}
+    </body>
+</html>

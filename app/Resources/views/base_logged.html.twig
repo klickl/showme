@@ -1,0 +1,102 @@
+{% extends "base.html.twig" %}
+
+ {#ajouter la navbar ici #}
+
+{%  block title %}
+    SHOWMEHOW
+{% endblock %}
+
+{%  block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('Resources/css/home.css') }}" />
+{%  endblock %}
+
+{%  block body %}
+
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu transition hidden" style="display: flex !important;">
+        {%  include "navbar.html.twig" %}
+    </div>
+
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div id="top_home_header" class="ui inverted vertical masthead center aligned segment">
+            <div class="ui text container shadow">
+                <h1 class="ui inverted header">
+                    SHOWMEHOW
+                </h1>
+            </div>
+
+        </div>
+        <div class="ui container" id="container_image">
+            <div class="ui secondary pointing menu">
+                {%  include "navbar.html.twig" %}
+            </div>
+        </div>
+
+        <div class="ui vertical stripe segment">
+            <div class="ui middle grid container">
+                <div class="row">
+                    <div id="main" class="sixteen wide column">
+                        <h2 id="page_title" class="ui header">
+                            <i class="{% block title_icon %}{% endblock %} icon"></i>
+                            <div class="content">
+                                {% block page_title %}{% endblock %}
+                            </div>
+                        </h2>
+                        <br/>
+                        <br/>
+                        {% block content %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%  if false %}
+            <div class="ui inverted vertical footer segment">
+                <div class="ui container">
+                    <div class="ui stackable inverted divided equal height stackable grid">
+                        <div class="three wide column">
+                            <h4 class="ui inverted header">Menu 1</h4>
+                            <div class="ui inverted link list">
+                                <a href="javascript:void(0)" class="item">Lien 1</a>
+                            </div>
+                        </div>
+                        <div class="three wide column">
+                            <h4 class="ui inverted header">Menu 2</h4>
+                            <div class="ui inverted link list">
+                                <a href="javascript:void(0)" class="item">Lien 1</a>
+                            </div>
+                        </div>
+                        <div class="seven wide column">
+                            <h4 class="ui inverted header">Infos</h4>
+                            <p>Quelques informations de dernières minutes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {%  endif %}
+    </div>
+{% endblock %}
+
+{%  block additionnal_js %}
+    <script>
+        $(function(){
+            $("body").addClass("pushable");
+            // fix menu when passed
+            $('.masthead')
+                    .visibility({
+                        once: false,
+                        onBottomPassed: function() {
+                            $('.fixed.menu').transition('fade in');
+                        },
+                        onBottomPassedReverse: function() {
+                            $('.fixed.menu').transition('fade out');
+                        }
+                    });
+            $(".ui.dropdown").dropdown();
+        });
+
+
+
+    </script>
+{%  endblock %}

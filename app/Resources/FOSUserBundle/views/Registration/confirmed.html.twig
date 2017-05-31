@@ -1,0 +1,30 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+    <div class="ui modal">
+        <div class="header"><i class="checkmark icon huge green" ></i>Bienvenue {{ user.username }}</div>
+        <div class="content">
+            <p>Votre compte a bien été créé ! Rendez-vous sur <a href="{{ path('homepage') }}">notre home</a> pour proposer ou trouver un service !</p>
+        </div>
+    </div>
+
+{% endblock fos_user_content %}
+
+{% block additionnal_js %}
+    <script>
+        $(function(){
+
+            $('.ui.modal').modal('show');
+            $('.ui.modal').modal({
+                dimmerSettings:{
+                    closable:false
+                }
+            });
+
+
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_page_title %}
+
+    <h2 class="ui teal center aligned icon header shadow">
+        <i class="circular user add icon"></i>
+        <a href="{{ path('index') }}">SHOWMEHOW</a>
+    </h2>
+    <h3>Créez votre compte</h3>
+{% endblock %}
+
+{% block fos_user_content %}
+{% include "FOSUserBundle:Registration:register_content.html.twig" %}
+{% endblock fos_user_content %}
+
+{% block title %}
+    Inscription
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('Resources/css/login.css') }}" />
+{% endblock %}

@@ -1,0 +1,68 @@
+{%  extends "base_logged.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style rel="stylesheet">
+        .ui.card{
+            width:100%;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+    Voir un cours
+{% endblock %}
+
+{% block page_title %}
+    Cours : {{ show.name }}
+{%  endblock %}
+
+{% block title_icon %}
+    unhide
+{% endblock %}
+
+{% block content %}
+    <div class="ui centered card">
+        <input type="hidden" value="{{ path('show_see', {'id': show.id}) }}" />
+        <div class="content">
+            {% if app.user.email == show.author.email %}
+                <div class="right floated">
+                    <a class="ui button" href="{{ path('show_edit', {'id':show.id }) }}"><i class="write icon"></i></a>
+                    <a class="ui red button" href="{{ path('show_delete', {'id':show.id}) }}"><i class="trash icon"></i></a>
+                </div>
+            {% endif %}
+            <img class="ui avatar image" src="{{ asset('Resources/images/nan.jpg') }}"> {{ show.author.username }}
+        </div>
+
+        <div class="content">
+            <div class="meta">Description</div>
+            <div class="description" style="font-weight: 600; font-size: 16px;">
+                {{ show.description }}
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="right floated meta"><i class="wait full icon"></i>{{ show.duration }}s</div>
+
+            <i class="tag icon"></i>
+            {{ show.category.name }}
+        </div>
+        <div class="extra content">
+            <div class="ui large transparent left icon input">
+                Difficulté
+            </div>
+                    <span class="right floated">
+                        {%  if show.level > 0 %}
+                            {% for i in 1..show.level  %}
+                                <i class="circle icon"></i>
+                            {% endfor %}
+                        {% endif %}
+                        {% if show.level < 5 %}
+                            {% for i in 1..(5 - show.level) %}
+                                <i class="circle thin icon"></i>
+                            {% endfor %}
+                        {% endif %}
+                   </span>
+        </div>
+    </div>
+{% endblock %}

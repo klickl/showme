@@ -1,0 +1,63 @@
+{%  extends "base_logged.html.twig" %}
+
+{% block title %}
+    Liste des catégories
+{% endblock %}
+
+{% block page_title %}
+    Liste des catégories
+{%  endblock %}
+
+{% block title_icon %}
+    list
+{% endblock %}
+
+{% block content %}
+
+    <div id="categories_list">
+        <div class="ui list">
+            {% if hasShows == true %}
+                <div class="ui warning message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                         <i class="warning sign icon"></i>Attention
+                    </div>
+                    L'icône pour supprimer une catégorie s'affiche que si cette dernière n'est rattaché à aucun cours !
+                </div>
+            {% endif %}
+            {% for category in categories %}
+                {%  if category.isParent %}
+                    <div class="item">
+                        <i class="tags icon"></i>
+                        <div class="content">
+                            {% include 'category/list_item.html.twig' with {'category' : category } %}
+
+                            {% if category.hasChildren %}
+                                <div class="list">
+                                    {% for child in category.children %}
+                                        <div class="item">
+                                            <i class="tag icon"></i>
+                                            <div class="content">
+                                                {% include 'category/list_item.html.twig' with {'category' : child } %}
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {%  endif %}
+                        </div>
+                    </div>
+                {%  endif %}
+            {% endfor %}
+        </div>
+        <div>
+            <a href="{{ path('category_create') }}" class="ui teal button">Ajouter une catégorie</a>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block additionnal_js %}
+    {{ parent() }}
+
+{% endblock %}

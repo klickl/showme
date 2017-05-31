@@ -1,0 +1,28 @@
+#top_home_header{
+    background: url('../images/services.png') black;
+}
+
+.visible #search_input{
+    top:0px;
+}
+
+#search_input{
+    color:black;
+    top:-5px;
+}
+
+#page_title{
+    border-bottom: 3px solid black;
+    border-radius: 4px 4px;
+    margin-bottom: 10px;
+}
+
+#main{
+    margin-top:20px;
+}
+
+
+.shadow {
+    text-shadow: 0 0 15px #303030;
+}
+

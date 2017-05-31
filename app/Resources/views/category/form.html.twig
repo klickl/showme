@@ -1,0 +1,23 @@
+{{ form_start(form, { 'attr': {'class': 'ui form'}}) }}
+
+
+    <div class="field">
+        <label>Nom </label>
+        {{ form_widget(form.name) }}
+    </div>
+
+    <br/>
+    <div class="field">
+        <label>Description</label>
+        {{ form_widget(form.description) }}
+    </div>
+
+    <br/>
+    <div class="field">
+        <label>Parent </label>
+        {{ form_widget(form.parent) }}
+    </div>
+
+    <input class="ui fluid large teal submit button" type="submit" id="_submit" value="Valider" />
+
+{{ form_end(form) }}

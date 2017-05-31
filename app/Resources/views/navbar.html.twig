@@ -1,0 +1,29 @@
+<a class="item {% if route == "show_create" %} active {% endif %}" href="{{ path('show_create') }}"><i class="plus icon"></i>Show them how</a>
+<a class="item {% if route == "show_list" %} active {% endif %}" href="{{ path('show_list') }}"><i class="list icon"></i>Let them show</a>
+
+{%  if is_granted("ROLE_ADMIN") %}
+    <div class="ui dropdown item">
+        <i class="settings icon"></i>
+        Administration
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            <a href="{{ path('categories_list') }}" class="item"><i class="tags icon"></i>Catégories</a>
+            <a href="{{ path('user_list') }}" class="item"><i class="users icon"></i>Utilisateurs</a>
+        </div>
+    </div>
+{% endif %}
+
+
+<div class="right item">
+    <div id="search_input" class="ui transparent icon input">
+        <input type="text" placeholder="Rechercher...">
+        <i class="search link icon"></i>
+    </div>
+</div>
+
+
+
+<div class="right menu">
+    <a class="ui blue button navbutton"><i class="user icon"></i> {{ app. user.username }}</a>
+    <a class="ui red button navbutton" href="{{ path('fos_user_security_logout') }}"><i class="sign out icon"></i>Déconnexion</a>
+</div>

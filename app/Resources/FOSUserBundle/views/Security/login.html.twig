@@ -1,0 +1,70 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('Resources/css/login.css') }}" />
+{% endblock %}
+
+{% block fos_page_title  %}
+    <h2 class="ui teal center aligned icon header shadow">
+        <i class="circular lock icon"></i>
+        <a href="{{ path('index') }}">SHOWMEHOW</a>
+    </h2>
+    <h3>Authentifiez-vous</h3>
+{% endblock %}
+
+{%  block title %}
+    Connexion
+{% endblock %}
+
+{% block fos_user_content %}
+
+
+    {% if error %}
+        <div class="ui red message">
+            {{ error.messageKey|trans(error.messageData, 'security') }}
+        </div>
+    {% endif %}
+
+    <form class="ui large form" action="{{ path("fos_user_security_check") }}" method="post">
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+        <div class="ui stacked segment">
+
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="user icon"></i>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Adresse email" required="required" />
+                </div>
+
+            </div>
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="lock icon"></i>
+                    <input type="password" id="password" name="_password" required="required"  placeholder="Mot de passe"/>
+                </div>
+            </div>
+
+
+            <input class="ui fluid large teal submit button" type="submit" id="_submit" name="_submit" value="Valider" />
+
+            <br/>
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            <label for="remember_me">Se souvenir</label>
+
+        </div>
+
+        <div class="ui error message"></div>
+
+    </form>
+
+
+
+{% endblock fos_user_content %}
+
+{% block additionnal_js %}
+    <script src="{{ asset('Resources/js/login.js') }}"></script>
+{%  endblock %}

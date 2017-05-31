@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="{{ asset('Resources/css/index.css') }}" />
+{% endblock %}
+
+{%  block title %}
+    SHOWMEHOW
+{% endblock %}
+
+{% block body %}
+
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu transition hidden" style="display: flex !important;">
+        <div class="ui container">
+            <div class="right menu">
+                <div class="item">
+                    <a href="{{ path('fos_user_security_login') }}" class="ui button">Connexion&nbsp;&nbsp;<i class="sign in icon"></i></a>
+                </div>
+                <div class="item">
+                    <a href="{{ path('fos_user_registration_register') }}" class="ui primary button">S'enregistrer&nbsp;&nbsp;<i class="add user icon"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div id="top_home_header" class="ui inverted vertical masthead center aligned segment">
+            <div class="ui container" id="container_image">
+                <div class="ui large secondary inverted pointing menu">
+                    <div class="right item">
+                        <a href="{{ path('fos_user_security_login') }}" class="ui inverted button">Connexion&nbsp;&nbsp;<i class="sign in icon"></i></a>
+                        <a  href="{{ path('fos_user_registration_register') }}" class="ui inverted button">S'enregistrer&nbsp;&nbsp;<i class="add user icon"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui text container shadow">
+                <h1 class="ui inverted header">
+                    SHOWMEHOW
+                </h1>
+                <h2>Profitez de votre expérience !</h2>
+            </div>
+
+        </div>
+
+        <div class="ui vertical stripe segment">
+            <div class="ui middle aligned stackable grid container">
+                <div class="row">
+                    <div class="eight wide column">
+                        <h3 class="ui header">Nous proposons un partage de services unique et efficace</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non augue congue, iaculis lectus in, commodo nisi. Proin nec porta dolor. </p>
+                    </div>
+                    <div class="six wide right floated column">
+                        <img src="{{ asset('Resources/images/white-image.png') }}" class="ui large bordered rounded image">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="ui vertical stripe quote segment">
+            <div class="ui equal width stackable internally celled grid">
+                <div class="center aligned row">
+                    <div class="column">
+                        <h3>"Super application" </h3>
+                        <h3>"J'ai toujours trouvé quelqu'un pour me dépanner !"</h3>
+                    </div>
+                    <div class="column">
+                        <h3>"Je ne pensais pas pouvoir aider autant de personnes."</h3>
+                        <p>
+                            <img src="{{ asset("Resources/images/nan.jpg") }}" class="ui avatar image"> <b>Jean-Paul</b> Référent mécanique moto
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui vertical stripe segment">
+            <div class="ui text container">
+                <h3 class="ui header">Lorem ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non augue congue, iaculis lectus in, commodo nisi. Proin nec porta dolor. Sed eleifend fermentum justo, at rhoncus ipsum pharetra sed. In facilisis felis vel mi porta dictum. Duis sollicitudin massa vestibulum, egestas tellus at, sagittis ligula.</p>
+                <a class="ui large button">Read More</a>
+                <h4 class="ui horizontal header divider">
+                    <a href="javascript:void(0)">Autres commentaires</a>
+                </h4>
+            </div>
+        </div>
+
+
+        <div class="ui inverted vertical footer segment">
+            <div class="ui container">
+                <div class="ui stackable inverted divided equal height stackable grid">
+                    <div class="three wide column">
+                        <h4 class="ui inverted header">Menu 1</h4>
+                        <div class="ui inverted link list">
+                            <a href="javascript:void(0)" class="item">Lien 1</a>
+                        </div>
+                    </div>
+                    <div class="three wide column">
+                        <h4 class="ui inverted header">Menu 2</h4>
+                        <div class="ui inverted link list">
+                            <a href="javascript:void(0)" class="item">Lien 1</a>
+                        </div>
+                    </div>
+                    <div class="seven wide column">
+                        <h4 class="ui inverted header">Infos</h4>
+                        <p>Quelques informations de dernières minutes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{%  block additionnal_js %}
+    <script>
+        $(document).ready(function() {
+            // fix menu when passed
+            $('.masthead')
+                    .visibility({
+                        once: false,
+                        onBottomPassed: function() {
+                            $('.fixed.menu').transition('fade in');
+                        },
+                        onBottomPassedReverse: function() {
+                            $('.fixed.menu').transition('fade out');
+                        }
+                    });
+        });
+
+        $(function(){
+           $("body").addClass("pushable");
+
+        });
+
+     </script>
+{%  endblock %}

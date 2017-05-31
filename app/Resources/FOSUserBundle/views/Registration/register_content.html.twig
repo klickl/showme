@@ -1,0 +1,50 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'ui large form'}}) }}
+
+
+            <div class="ui stacked segment">
+
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="at icon"></i>
+                        {{ form_widget(form.email, { 'attr': {'class': '', 'placeholder':'Votre email'}}) }}
+                    </div>
+                </div>
+
+                <br/>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        {{ form_widget(form.username,{ 'attr': {'class': '', 'placeholder':'Votre pseudo'}} ) }}
+                    </div>
+                </div>
+
+                <br/>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        {{ form_widget(form.plainPassword.first, { 'attr': {'class': '', 'placeholder':'Mot de passe'}} ) }}
+                    </div>
+                </div>
+
+                <br/>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        {{ form_widget(form.plainPassword.second, { 'attr': {'class': '', 'placeholder':'Confirmez mot de passe'}} ) }}
+                    </div>
+                </div>
+                <br/>
+
+                <input class="ui fluid large teal submit button" type="submit" id="_submit" name="_submit" value="Valider" />
+
+
+            </div>
+
+
+        {{ form_end(form) }}
+
+    </div>
+</div>

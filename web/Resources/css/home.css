@@ -1,0 +1,23 @@
+#top_home_header {
+    min-height: 350px;
+    padding: 1em 0em;
+}
+
+
+.masthead h1.ui.header {
+    margin-top: 2em;
+    margin-bottom: 0em;
+    font-size: 4em;
+    font-weight: normal;
+}
+
+
+#container_image{
+    margin-top:5px;
+    width:100%;
+}
+
+.navbutton{
+    top: -2px;
+    position: relative;
+}

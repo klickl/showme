@@ -1,0 +1,98 @@
+{%  extends "base_logged.html.twig" %}
+
+{%  set ribbon_class="ui ribbon label"  %}
+{% block title %}
+    Liste des utilisateurs
+{% endblock %}
+
+{% block page_title %}
+    Liste des utilisateurs
+{%  endblock %}
+
+{% block title_icon %}
+    list
+{% endblock %}
+
+{% block content %}
+    <table class="ui selectable inverted grey table">
+        <thead>
+            <tr><th>Nom d'utilisateur</th>
+                <th>Email</th>
+                <th>Rôle</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>
+                        <div id="ribbon_{{ user.id }}">{{ user.username }}</div>
+                    </td>
+                    <td>{{ user.email }}</td>
+
+                    <td>
+                        <div class="form">
+                            <div class="inline field">
+                                <div class="ui toggle checkbox {% if user.id == app.user.id %} unusable {% endif %}" id="parent_toggle_{{ user.id }}">
+                                    <input type="checkbox" class="hidden toggle_admin" value="{{ user.id }}" data-role="{% if user.hasRole("ROLE_ADMIN") %}adm{% else %}cli{% endif %}" />
+                                    <label id="toggle_admin_{{ user.id }}"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    {% if app.user.id != user.id %}
+                        <td><a class="ui button" href="{{ path('user_delete', {'id':user.id}) }}"><i class="red remove user icon"></i></a></td>
+                    {% else %}
+
+                        <td></td>
+                    {% endif %}
+                </tr>
+            {%  endfor %}
+        </tbody>
+{% endblock %}
+
+{% block additionnal_js %}
+    {{ parent() }}
+    <script>
+        $(function(){
+            $('.ui.checkbox').checkbox();
+            $(".unusable").each(function(){
+                $(this).checkbox('set disabled');
+            });
+            $(".toggle_admin").each(function(){
+                var $this = $(this);
+                var parent = $("#parent_toggle_"+$this.val());
+                setCheckBox($this);
+                if(!parent.hasClass("disabled"))
+                {
+                    parent.click(function(){
+                        $.post("{{ path('user_toggle_admin') }}", {'id': parseInt($(this).attr("id").split("_")[2])}, function( data ) {
+                            $this.attr("data-role", data);
+                            setCheckBox($this);
+                        });
+                    });
+                }
+            });
+        });
+
+        function setCheckBox($this){
+            var label = $("#toggle_admin_"+$this.val());
+            var parent = $("#parent_toggle_"+$this.val());
+            var role = $this.attr("data-role");
+            var div_ribbon = $("#ribbon_"+$this.val());
+            if(role == "adm")
+            {
+                parent.checkbox('set checked');
+                label.text("Administrateur");
+                div_ribbon.addClass("{{ ribbon_class }}");
+            }
+
+            else
+            {
+                parent.checkbox('set unchecked');
+                label.text("Client");
+                div_ribbon.removeClass("{{ ribbon_class }}");
+            }
+        }
+    </script>
+{% endblock %}
